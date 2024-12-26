@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ThinkToShare\Payment;
+namespace ThinkToShare\Betterstack;
 
 use Illuminate\Support\ServiceProvider;
 
