@@ -13,7 +13,7 @@ class Heartbeat
 
     public function __construct()
     {
-        $this->api_url = rtrim(config('betterstack.heartbeat_url', 'https://uptime.betterstack.com/api/v1/heartbeat'), '/');
+        $this->api_url = rtrim((string) config('betterstack.heartbeat_url', 'https://uptime.betterstack.com/api/v1/heartbeat'), '/'); // @phpstan-ignore-line
     }
 
     public function beats(string $name): void
@@ -33,7 +33,7 @@ class Heartbeat
             throw new Exception("No heartbeat exists with name: [{$name}]");
         }
 
-        return $key;
+        return (string) $key; // @phpstan-ignore-line
     }
 
     protected function call(string $url): void
