@@ -13,7 +13,7 @@ class Heartbeat
 
     public function __construct()
     {
-        $this->api_url = rtrim(config('betterstact.heartbeat_url', 'https://uptime.betterstack.com/api/v1/heartbeat'), '/');
+        $this->api_url = rtrim(config('betterstack.heartbeat_url', 'https://uptime.betterstack.com/api/v1/heartbeat'), '/');
     }
 
     public function beats(string $name): void

@@ -5,34 +5,48 @@
             "ThinkToShare\\Betterstack\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
-		{
-			"name": "Think-To-Share",
-			"email": "admin@thinktoshare.com"
-		}
-	],
+        {
+            "name": "Think-To-Share",
+            "email": "admin@thinktoshare.com"
+        }
+    ],
     "require": {
         "php": "^8.2",
-		"illuminate/support": "^11",
-		"illuminate/http": "^11"
+        "illuminate/support": "^11",
+        "illuminate/http": "^11"
     },
-    "minimum-stability": "stable",
+    "require-dev": {
+        "laravel/pint": "^1.19",
+        "pestphp/pest": "^3.7",
+        "orchestra/testbench": "^9.9"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "extra": {
         "laravel": {
-           "providers": [
-				"ThinkToShare\\Betterstack\\BetterstackServiceProvider"
-			],
-			"aliases": {
-				"Heartbeat": "ThinkToShare\\Betterstack\\Facades\\Heartbeat"
-			}
+            "providers": [
+                "ThinkToShare\\Betterstack\\BetterstackServiceProvider"
+            ],
+            "aliases": {
+                "Heartbeat": "ThinkToShare\\Betterstack\\Facades\\Heartbeat"
+            }
         }
     },
     "config": {
-		"allow-plugins": {
-			"php-http/discovery": true
-		}
-	},
-    "require-dev": {
-        "laravel/pint": "^1.18"
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@prepare",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "lint": "@php vendor/bin/pint --ansi",
+        "test": "@php vendor/bin/pest"
     }
 }
